@@ -1,0 +1,4 @@
+/* Coseeing UI 的 Path B：本專案自己跑 Tailwind v4，
+ * 由同一次編譯產生 design system 元件與本專案自製元件的 class。 */
+@import "tailwindcss";
+@import "@coseeing/ui/theme.css";
