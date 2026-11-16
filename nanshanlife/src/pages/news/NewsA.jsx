@@ -1,11 +1,11 @@
 // 最新消息頁 A 版（良好）。對照表見 docs/design.md 4.2。
 
-import { Link, Table, Tabs } from '@coseeing/ui'
+import { Dialog, Link, Table, Tabs } from '@coseeing/ui'
 import { useId } from 'react'
-import { ShareIcon } from '../../site/icons.jsx'
 import { BulletList } from '../../site/BulletList.jsx'
+import { DateField } from '../../site/DateField.jsx'
 import { RealCheckbox } from '../../site/RealCheckbox.jsx'
-import { iconButton, textLink } from '../../site/styles.js'
+import { textLink } from '../../site/styles.js'
 import { BROCHURE, SOURCE_PATH } from './data.jsx'
 import { NewsPage } from './NewsParts.jsx'
 
@@ -31,11 +31,9 @@ function NewsTabs({ items }) {
 export default function NewsA() {
   return (
     <NewsPage
-      shareButton={
-        <button type="button" aria-label="分享" className={iconButton}>
-          <ShareIcon />
-        </button>
-      }
+      shareButtonProps={{ 'aria-label': '分享' }}
+      // 原生 <dialog>：開啟時焦點移進對話框，念出標題「分享」
+      DialogComponent={Dialog}
       TabsComponent={NewsTabs}
       TableComponent={Table}
       links={{
@@ -52,7 +50,14 @@ export default function NewsA() {
         'aria-expanded': expanded,
         'aria-controls': contentId,
       })}
+      // ✓ 圖示的名稱是「已」→ 按下後按鈕的名稱變成「已關注講者」
+      followIconProps={{ role: 'img', 'aria-label': '已' }}
+      DateFieldComponent={DateField}
       CheckboxControl={RealCheckbox}
+      exposeRequired
+      exposeError
+      announceToast
+      skipLink
       newsTitleTag="h2"
       ListComponent={BulletList}
       markLanguage

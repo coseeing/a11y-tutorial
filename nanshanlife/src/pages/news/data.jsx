@@ -22,6 +22,8 @@ export function absoluteUrl(path) {
 export const NEWS = [
   {
     key: 'year-end',
+    // 這則消息的標題旁有「關注講者」按鈕（工作坊 B2 示範）
+    followable: true,
     title: '年終講座開放報名',
     date: '2026/11/10',
     summary: ({ brochure, source }) => (
@@ -90,13 +92,14 @@ export const EVENT_COLUMNS = [
   { key: 'seats', label: '剩餘名額', width: '25%' },
 ]
 
+// fullDate：「依日期查詢活動」比對用的完整日期（表格不顯示）。
 export const EVENT_ROWS = [
-  { date: '12/6', name: '年終講座', place: '台北', seats: '3' },
-  { date: '12/13', name: '設計工作坊', place: '台中', seats: '10' },
-  { date: '12/20', name: '讀書會', place: '線上', seats: '25' },
-  { date: '12/27', name: '無障礙入門講座', place: '高雄', seats: '15' },
-  { date: '1/10', name: '寫作工作坊', place: '台北', seats: '8' },
-  { date: '1/17', name: '資料分析讀書會', place: '線上', seats: '30' },
+  { date: '12/6', fullDate: '2026/12/06', name: '年終講座', place: '台北', seats: '3' },
+  { date: '12/13', fullDate: '2026/12/13', name: '設計工作坊', place: '台中', seats: '10' },
+  { date: '12/20', fullDate: '2026/12/20', name: '讀書會', place: '線上', seats: '25' },
+  { date: '12/27', fullDate: '2026/12/27', name: '無障礙入門講座', place: '高雄', seats: '15' },
+  { date: '1/10', fullDate: '2027/01/10', name: '寫作工作坊', place: '台北', seats: '8' },
+  { date: '1/17', fullDate: '2027/01/17', name: '資料分析讀書會', place: '線上', seats: '30' },
 ]
 
 export const EVENT_NOTE =

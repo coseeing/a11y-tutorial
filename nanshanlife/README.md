@@ -1,12 +1,14 @@
-# 工作坊 A（4）鍵盤與焦點：範例頁
+# 工作坊 A（4）、B（1）～（3）：範例頁
 
-教材 `../04-鍵盤、焦點與螢幕閱讀器-規劃.md` 附錄 A 的範例頁。虛構網站「好好學」線上課程平台的三個頁面，各有 A 版（良好）與 B 版（有問題）：
+教材各單元「規劃.md」附錄 A 的範例頁（工作坊 A（4）鍵盤與焦點、B（1）文件的語意、B（2）螢幕閱讀器的互動與回饋、B（3）表單的無障礙）。虛構網站「好好學」線上課程平台的五個頁面，各有 A 版（良好）與 B 版（有問題）：
 
 | 頁面 | A 版 | B 版 | 用途 |
 |---|---|---|---|
-| 最新消息頁 | `/a/news/` | `/b/news/` | 活動 4、活動 5 前後的講解與示範 |
+| 最新消息頁 | `/a/news/` | `/b/news/` | 活動 4 至活動 7 前後的講解與示範 |
 | 服務條款頁 | `/a/terms/` | `/b/terms/` | 活動 4：閱讀服務條款（學習單 4） |
 | 課程場次頁 | `/a/sessions/` | `/b/sessions/` | 活動 5：查詢課程場次（學習單 5） |
+| 課程詳情頁 | `/a/course/` | `/b/course/` | 活動 6：收藏與報名課程（學習單 6） |
+| 預約試聽頁 | `/a/trial/` | `/b/trial/` | 活動 7：預約試聽（學習單 7） |
 
 另有講師索引頁 `/`、主辦單位公告 `/notice/`、註冊完成 `/done/`。
 
@@ -23,6 +25,10 @@
 | 服務條款頁 B 版 | https://accessibility.coseeing.org/a11y-tutorial/11512-nanshanlife/b/terms/ |
 | 課程場次頁 A 版 | https://accessibility.coseeing.org/a11y-tutorial/11512-nanshanlife/a/sessions/ |
 | 課程場次頁 B 版 | https://accessibility.coseeing.org/a11y-tutorial/11512-nanshanlife/b/sessions/ |
+| 課程詳情頁 A 版 | https://accessibility.coseeing.org/a11y-tutorial/11512-nanshanlife/a/course/ |
+| 課程詳情頁 B 版 | https://accessibility.coseeing.org/a11y-tutorial/11512-nanshanlife/b/course/ |
+| 預約試聽頁 A 版 | https://accessibility.coseeing.org/a11y-tutorial/11512-nanshanlife/a/trial/ |
+| 預約試聽頁 B 版 | https://accessibility.coseeing.org/a11y-tutorial/11512-nanshanlife/b/trial/ |
 
 設計與每個元件的 A／B 差異見 [`docs/design.md`](docs/design.md)。
 
@@ -79,6 +85,8 @@ npm run build
 
 - **發給學員的網址請保留結尾斜線**（`/b/terms/`，不是 `/b/terms`）。頁面內的連結都是相對路徑（`../../done/`），少了斜線會解析到錯誤的層級。開發伺服器會自動轉址；部署到 `https://accessibility.coseeing.org` 後，請確認主機也會把少了斜線的網址轉到有斜線的網址。
 - **B 版的仿製表格只保證在筆電寬度（約 800px 以上）和 A 版外觀一致**。手機寬度下，真正的 `<table>` 會依內容調整欄寬，CSS grid 不會，兩版換行的位置會不同。
+- **日曆以開啟頁面當天為「今天」**：教材中的「下週二」「11/24」等日期，請依上課當天的日期調整。
+- **toast 停留 6 秒**（`src/site/toast.jsx` 的 `TOAST_DURATION`），A、B 兩版相同。
 - **B 版仿製核取方塊**是模仿 Chrome 原生核取方塊畫的，並排比較時，勾勾的形狀會有些微差異。
 
 ## 其他

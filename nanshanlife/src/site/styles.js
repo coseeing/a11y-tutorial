@@ -26,3 +26,9 @@ export const textLink =
 export const bulletList = 'm-0 grid list-none gap-8 p-0'
 export const bulletItem = 'typography-body1 m-0 pl-[1.1em] indent-[-1.1em]'
 export const BULLET = '・'
+
+/**
+ * DS Input 出錯時的紅框（複製自 coseeing-ui/src/components/Input/Input.tsx 的 invalidStyles）。
+ * B 版用：只要紅框的外觀，不要 DS Input 的 invalid 屬性附帶的 aria-invalid。
+ */
+export const inputInvalidLook = 'border-red-PRIMARY focus:border-red-PRIMARY focus-visible:ring-red-PRIMARY'

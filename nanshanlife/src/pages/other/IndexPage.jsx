@@ -1,12 +1,14 @@
-// 講師索引頁：列出六個範例頁的連結與用途（對應教材附錄 A）。
+// 講師索引頁：列出各範例頁的連結與用途（對應各單元教材的附錄 A）。
 
 import { Container, Link, Table } from '@coseeing/ui'
 import { textLink } from '../../site/styles.js'
 
 const PAGES = [
-  { name: '最新消息頁', path: 'news', usage: '活動 4、活動 5 前後的講解與示範' },
+  { name: '最新消息頁', path: 'news', usage: '活動 4 至活動 7 前後的講解與示範' },
   { name: '服務條款頁', path: 'terms', usage: '活動 4：閱讀服務條款' },
   { name: '課程場次頁', path: 'sessions', usage: '活動 5：查詢課程場次' },
+  { name: '課程詳情頁', path: 'course', usage: '活動 6：收藏與報名課程' },
+  { name: '預約試聽頁', path: 'trial', usage: '活動 7：預約試聽' },
 ]
 
 const COLUMNS = [
@@ -43,7 +45,7 @@ export default function IndexPage() {
         </p>
         <Table columns={COLUMNS} rows={rows} />
         <p className="typography-body2 m-0 text-teal-300">
-          例外：B 版的消息來源連結與消費者保護法連結，畫面上也顯示完整網址。輔助頁：
+          例外：B 版的消息來源連結與消費者保護法連結，畫面上也顯示完整網址；B 版的表單出錯時只有紅框，沒有錯誤文字。輔助頁：
           <Link href="./notice/" className={textLink}>
             主辦單位公告
           </Link>

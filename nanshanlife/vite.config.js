@@ -20,6 +20,10 @@ const pages = {
   'b-terms': 'b/terms/index.html',
   'a-sessions': 'a/sessions/index.html',
   'b-sessions': 'b/sessions/index.html',
+  'a-course': 'a/course/index.html',
+  'b-course': 'b/course/index.html',
+  'a-trial': 'a/trial/index.html',
+  'b-trial': 'b/trial/index.html',
   notice: 'notice/index.html',
   done: 'done/index.html',
 }
