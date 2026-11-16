@@ -37,32 +37,28 @@
 ## 環境需求
 
 - Node.js 20 以上
-- 與本專案同層的 `../coseeing-ui`（Coseeing design system 原始碼）
+- 可以讀取 GitHub Packages 的 GitHub token（`read:packages` 權限），用來安裝 `@coseeing/ui`
 
 ## 第一次安裝
 
-### 1. 建置 Coseeing UI
+### 1. 設定 GitHub Packages 認證
 
-```sh
-cd ..
-git clone https://github.com/coseeing/ui coseeing-ui
-cd coseeing-ui
-npm install
-npm run build:js
-npm run build:types
-cp src/styles/theme.css src/styles/tokens.css src/styles/base.css src/styles/typography.css dist/
+Coseeing design system（[`@coseeing/ui`](https://github.com/coseeing/ui)）目前發布在 GitHub Packages，安裝前需要認證。在本專案根目錄建立 `.npmrc`，或把同樣兩行寫進使用者層級的 `~/.npmrc`（就不需要在專案內放 token）：
+
+```
+@coseeing:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=<具 read:packages 權限的 GitHub token>
 ```
 
-不直接執行 `npm run build`，是因為它最後一步 `build:css` 在 Windows 上會失敗（`scripts/build-css.mjs` 用 `execFileSync("npx")`）。本專案採 README 的 Path B（自己跑 Tailwind），只需要上面複製的四個 CSS 檔，用不到那一步產生的 `styles.css`。
-
-Coseeing UI 更新時，重新執行 `git pull` 和上面的建置步驟即可。
+專案內的 `.npmrc` 可能含 token，已列入 `.gitignore`，**不得提交**。`@coseeing/ui` 公開到 npm 後即可移除此設定。
 
 ### 2. 安裝本專案
 
 ```sh
-cd ../nanshanlife
 npm install
 ```
+
+`@coseeing/ui` 的版本寫在 `package.json`（`^1.0.0`）。要更新時執行 `npm update @coseeing/ui`。
 
 ## 開發
 

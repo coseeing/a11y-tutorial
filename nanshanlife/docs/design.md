@@ -23,7 +23,7 @@
 
 ### 2.2 Coseeing UI design system
 
-- 原始碼 clone 在 `../coseeing-ui`，本機 build，專案以 `"@coseeing/ui": "file:../coseeing-ui"` 引用。
+- 從 GitHub Packages 安裝：`package.json` 寫 `"@coseeing/ui": "^1.0.0"`，`.npmrc` 把 `@coseeing` 指到 `https://npm.pkg.github.com`（需要 token，`.npmrc` 不提交；作法同 slide-reader）。
   - 理由：套件發佈在 GitHub Packages，安裝需要 token；採本機 build 後上傳靜態檔，不需要 token。
 - 開發環境直接在 Windows 上，不使用 Docker。
 - **Windows build 問題**：`npm run build` 的最後一步 `build:css`（`scripts/build-css.mjs`）用 `execFileSync("npx", …)` 編譯 `dist/styles.css`，在 Windows 上會失敗。本專案採 Path B，用不到 `styles.css`，只需要四個原始 CSS 檔，所以不修改 repo，改為：
@@ -37,7 +37,6 @@
   @import "@coseeing/ui/theme.css";
   ```
   自製元件因此可直接使用同一套 token（`bg-teal-PRIMARY`、`typography-body1`、`px-16` 等）。
-- Vite 設定 `resolve.dedupe: ['react', 'react-dom']`：`file:` 引用為 symlink，否則會載入兩份 React，讓 `Tabs` 等使用 hooks 的元件出錯。
 - 字型：由 Google Fonts 載入 Noto Sans TC（design system 只指定字型名稱）。
 
 ### 2.3 網址與頁面標題
@@ -286,4 +285,4 @@ A 版 `src/site/DateField.jsx`、B 版 `src/lookalikes/FakeDateField.jsx`，外�
 ## 6. 交付
 
 - `npm run build` 產出 `dist/`，把內容上傳到 `https://accessibility.coseeing.org` 的 `/a11y-tutorial/11512-nanshanlife/` 路徑下（`https://accessibility.coseeing.org/a11y-tutorial/11512-nanshanlife/`）。
-- README：如何 build `coseeing-ui`（含 Windows 繞過步驟）、開發、部署。
+- README：如何設定 GitHub Packages 認證並安裝、開發、部署。

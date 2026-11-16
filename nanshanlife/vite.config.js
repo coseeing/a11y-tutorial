@@ -56,11 +56,6 @@ function trailingSlashRedirect() {
 export default defineConfig({
   base,
   plugins: [trailingSlashRedirect(), react(), tailwindcss()],
-  resolve: {
-    // @coseeing/ui 以 file: 引用（symlink），不 dedupe 會載入兩份 React，
-    // 讓 Tabs 等使用 hooks 的元件出錯。
-    dedupe: ['react', 'react-dom'],
-  },
   build: {
     rolldownOptions: {
       input: Object.fromEntries(
