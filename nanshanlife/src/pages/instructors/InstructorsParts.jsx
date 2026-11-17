@@ -10,17 +10,14 @@ const focusRing = 'focus-visible:outline-3 focus-visible:outline-orange-PRIMARY 
 const dotColors = { green: 'bg-[#287549]', yellow: 'bg-[#a26c08]', red: 'bg-[#b23a32]' }
 
 export function InstructorsPage({ accessible }) {
-  const Main = accessible ? 'main' : 'div'
   const Heading = accessible ? 'h2' : 'h4'
   const Subheading = accessible ? 'h3' : 'h5'
 
   return (
     <div className="bg-bg-light-off-white font-noto text-[1.6rem] leading-[1.75] text-teal-700 [overflow-wrap:anywhere]">
-      {accessible && (
-        <a className={`fixed top-16 left-16 z-10 -translate-y-[200%] rounded-8 bg-neutral-white px-16 py-12 text-teal-PRIMARY underline underline-offset-[.2em] focus:translate-y-0 ${focusRing}`} href="#activity-title" onClick={() => document.getElementById('activity-title')?.focus()}>
-          跳到主要內容
-        </a>
-      )}
+      <a className={`fixed top-16 left-16 z-10 -translate-y-[200%] rounded-8 bg-neutral-white px-16 py-12 text-teal-PRIMARY underline underline-offset-[.2em] focus:translate-y-0 ${focusRing}`} href="#activity-title" onClick={() => document.getElementById('activity-title')?.focus()}>
+        跳到主要內容
+      </a>
       <header className="border-b border-bg-warm-gray bg-neutral-white">
         <div className={`${shell} flex flex-wrap items-center justify-between gap-16 py-20`}>
           <span className="typography-headline4 text-teal-PRIMARY">好好學</span>
@@ -28,10 +25,10 @@ export function InstructorsPage({ accessible }) {
       </header>
 
       {/* B 版固定 960px，保留窄視窗的水平捲動問題（1.4.10）。 */}
-      <Main className={`mx-auto pt-40 pb-0 ${accessible ? 'w-[min(960px,calc(100%_-_3.2rem))]' : 'w-[960px]'}`}>
+      <main className={`mx-auto pt-40 pb-0 ${accessible ? 'w-[min(960px,calc(100%_-_3.2rem))]' : 'w-[960px]'}`}>
         <div className="mb-32">
           <p className={`${paragraph} font-bold tracking-[.08em]`}>分享專業，讓學習走得更遠</p>
-          <h1 className={`m-0 mb-16 text-[clamp(2.8rem,4vw,4rem)] font-bold leading-[1.4] text-teal-PRIMARY ${focusRing}`} id="activity-title" tabIndex={accessible ? -1 : undefined}>{ACTIVITY.title}</h1>
+          <h1 className={`m-0 mb-16 text-[clamp(2.8rem,4vw,4rem)] font-bold leading-[1.4] text-teal-PRIMARY ${focusRing}`} id="activity-title" tabIndex={-1}>{ACTIVITY.title}</h1>
           <p className={`${paragraph} text-[1.4rem]`}>發布日期：<time dateTime="2026-10-20">{ACTIVITY.date}</time></p>
           <section id="overview" className="mt-24 scroll-mt-24">
             <Heading className={sectionTitle}>活動介紹</Heading>
@@ -94,7 +91,7 @@ export function InstructorsPage({ accessible }) {
             <p className={paragraph}>請備妥講師介紹與課程構想；如需報名協助，請聯絡課程團隊。</p>
           </aside>
         </div>
-      </Main>
+      </main>
 
       {/* 與固定寬度主容器分開，確保 B 版的知覺特徵指示也能在窄視窗下觀察。 */}
       <section className={`${shell} mt-8 mb-40 flex items-center justify-between gap-24 rounded-16 bg-bg-warm-gray p-24 [@media(max-width:768px)]:flex-col [@media(max-width:768px)]:items-start scroll-mt-24`} aria-label="講師招募簡章">
