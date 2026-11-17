@@ -1,4 +1,4 @@
-// 產生範例頁用的 PDF 佔位檔：public/files/活動簡章.pdf（約 200KB）、服務條款全文.pdf（約 100KB）。
+// 產生範例頁用的 PDF 佔位檔：講師招募簡章.pdf（約 100KB）、public/files/活動簡章.pdf（約 200KB）、服務條款全文.pdf（約 100KB）。
 // 檔案大小接近頁面上描述的大小。內容只有一行英文說明（PDF 內建字型沒有中文）。
 //
 // 用法：node scripts/make-placeholder-pdfs.mjs
@@ -43,6 +43,7 @@ function makePdf(text, targetBytes) {
 }
 
 const files = [
+  ['講師招募簡章.pdf', '2027 instructor recruitment brochure (sample file)', 100 * 1024],
   ['活動簡章.pdf', 'Year-end lecture brochure (sample file)', 200 * 1024],
   ['服務條款全文.pdf', 'Terms of service (sample file)', 100 * 1024],
 ]

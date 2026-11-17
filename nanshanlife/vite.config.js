@@ -14,6 +14,8 @@ const base = '/a11y-tutorial/11512-nanshanlife/'
 // （念出頁面標題、從頁首開始讀），行為與真實網站一致。
 const pages = {
   index: 'index.html',
+  'a-instructors': 'a/instructors/index.html',
+  'b-instructors': 'b/instructors/index.html',
   'a-news': 'a/news/index.html',
   'b-news': 'b/news/index.html',
   'a-terms': 'a/terms/index.html',

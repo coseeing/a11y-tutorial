@@ -4,6 +4,7 @@ import { Container, Link, Table } from '@coseeing/ui'
 import { textLink } from '../../site/styles.js'
 
 const PAGES = [
+  { name: '講師招募活動頁', path: 'instructors', usage: '活動1任務三：視覺呈現與內容結構' },
   { name: '最新消息頁', path: 'news', usage: '活動 4 至活動 7 前後的講解與示範' },
   { name: '服務條款頁', path: 'terms', usage: '活動 4：閱讀服務條款' },
   { name: '課程場次頁', path: 'sessions', usage: '活動 5：查詢課程場次' },
@@ -45,7 +46,7 @@ export default function IndexPage() {
         </p>
         <Table columns={COLUMNS} rows={rows} />
         <p className="typography-body2 m-0 text-teal-300">
-          例外：B 版的消息來源連結與消費者保護法連結，畫面上也顯示完整網址；B 版的表單出錯時只有紅框，沒有錯誤文字。輔助頁：
+          例外：講師招募活動頁另有狀態文字、操作指示，以及放大與窄視窗時的排版差異；B 版的消息來源連結與消費者保護法連結，畫面上也顯示完整網址；B 版的表單出錯時只有紅框，沒有錯誤文字。輔助頁：
           <Link href="./notice/" className={textLink}>
             主辦單位公告
           </Link>
