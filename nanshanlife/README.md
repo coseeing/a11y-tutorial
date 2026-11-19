@@ -12,6 +12,11 @@
 
 另有講師索引頁 `/`、主辦單位公告 `/notice/`、註冊完成 `/done/`。
 
+講師索引首頁另有「活動 8：無障礙檢測練習」，連到同一網站下的
+`/a11y-tutorial/test-practice/1/`。這三頁由同儲存庫的 `wave-practice/`
+子專案提供，需另外建置並部署至 `/a11y-tutorial/`；建置方式見
+[`wave-practice/README.md`](../wave-practice/README.md)。
+
 ### 正式網址
 
 部署在 `https://accessibility.coseeing.org/a11y-tutorial/11512-nanshanlife/`：
