@@ -12,10 +12,26 @@
 
 另有講師索引頁 `/`、主辦單位公告 `/notice/`、註冊完成 `/done/`。
 
-講師索引首頁另有「活動 8：無障礙檢測練習」，連到同一網站下的
-`/a11y-tutorial/test-practice/1/`。這三頁由同儲存庫的 `wave-practice/`
-子專案提供，需另外建置並部署至 `/a11y-tutorial/`；建置方式見
-[`wave-practice/README.md`](../wave-practice/README.md)。
+講師索引首頁另有「活動 8：無障礙檢測練習」，連到本專案的
+`./test-practice/1/`，再依頁面連結前往第二、三頁。這些頁面和既有教材使用
+同一個 Vite 專案，不需要另外安裝、啟動或部署另一個專案。
+
+| 活動 8 頁面 | 路徑 |
+| --- | --- |
+| 活動導覽 | `/test-practice/1/` |
+| 課程內容 | `/test-practice/2/` |
+| 行前提醒 | `/test-practice/3/` |
+
+頁面原始碼在 `src/pages/practice/`，使用 `@coseeing/ui` 的 Card、Button、Link、
+Table、Tabs、Accordion、Field、Input 等共用元件。下午場刻意沒有表頭的表格
+位於 `src/lookalikes/PracticeLayoutTable.jsx`。圖片與其他資源都放在 `public/`。
+
+保留的檢測情境包含：無名稱連結、相鄰同網址連結、跳級標題、沒有表頭的資料表、
+可疑的圖片替代文字、低對比文字、姓名欄位缺少關聯標籤，以及失效的 ARIA 說明參照。
+請勿修正這些教學目標。模擬報名不會送出或儲存個人資料。
+
+執行 `npm test` 可驗證這些情境；授課前仍需使用 Chrome 的 WAVE 擴充套件檢查，
+並切到下午場後重新掃描。
 
 ### 正式網址
 
@@ -34,6 +50,7 @@
 | 課程詳情頁 B 版 | https://accessibility.coseeing.org/a11y-tutorial/11512-nanshanlife/b/course/ |
 | 預約試聽頁 A 版 | https://accessibility.coseeing.org/a11y-tutorial/11512-nanshanlife/a/trial/ |
 | 預約試聽頁 B 版 | https://accessibility.coseeing.org/a11y-tutorial/11512-nanshanlife/b/trial/ |
+| 活動 8：檢測練習 | https://accessibility.coseeing.org/a11y-tutorial/11512-nanshanlife/test-practice/1/ |
 
 設計與每個元件的 A／B 差異見 [`docs/design.md`](docs/design.md)。
 
@@ -70,6 +87,7 @@ npm install
 ```sh
 npm run dev      # 開發伺服器，開啟後先到講師索引頁 http://localhost:5173/a11y-tutorial/11512-nanshanlife/
 npm run lint     # oxlint
+npm test         # 部署前綴、檢測情境與互動測試
 ```
 
 ## 部署
@@ -78,9 +96,39 @@ npm run lint     # oxlint
 npm run build
 ```
 
-把產出的 `dist/` 內容整個上傳到 `https://accessibility.coseeing.org` 的 `/a11y-tutorial/11512-nanshanlife/` 路徑下，也就是 `https://accessibility.coseeing.org/a11y-tutorial/11512-nanshanlife/`。`vite.config.js` 的 `base` 設為 `/a11y-tutorial/11512-nanshanlife/`，若部署路徑改變，請一併修改。
+把產出的 `dist/` 內容整個上傳到 `https://accessibility.coseeing.org` 的 `/a11y-tutorial/11512-nanshanlife/` 路徑下，也就是 `https://accessibility.coseeing.org/a11y-tutorial/11512-nanshanlife/`。預設前綴仍為 `/a11y-tutorial/11512-nanshanlife/`；部署到其他路徑時可用 `VITE_BASE_PATH` 指定，不必修改原始碼。
 
 開頭表格的網址都相對於這個路徑，例如 A 版最新消息頁是 `https://accessibility.coseeing.org/a11y-tutorial/11512-nanshanlife/a/news/`。
+
+### GitHub Pages 自動部署
+
+儲存庫根目錄的 `.github/workflows/deploy-pages.yml` 會在推送到 `main` 時，依序
+安裝套件、執行測試與 lint、建置 `nanshanlife/dist/`，再部署到 GitHub Pages。
+也可在 Actions 頁面手動執行。三頁練習與其他教材會一起部署。
+
+第一次使用需要在 GitHub 設定：
+
+1. 儲存庫 **Settings → Pages → Build and deployment → Source** 選 **GitHub Actions**。
+2. `@coseeing/ui` 套件的 **Package settings → Manage Actions access → Add repository**
+   加入 **coseeing/a11y-tutorial**，授予 **Read**。
+
+workflow 使用 GitHub 自動提供的 `GITHUB_TOKEN` 與 `packages: read` 安裝共用套件，
+不需要把個人的 token 放進儲存庫。如果套件讀取出現 401 或 403，先確認第二步的
+跨儲存庫套件權限。這些 GitHub 網站設定無法只靠提交 workflow 檔案完成。
+
+未設定自訂網域時，預期首頁為 `https://coseeing.github.io/a11y-tutorial/`，
+活動 8 第一頁為 `https://coseeing.github.io/a11y-tutorial/test-practice/1/`。
+實際網址以部署 job 的輸出為準。workflow 會依 Pages 回傳的 `base_path`
+設定 `VITE_BASE_PATH`，也支援自訂網域的根路徑。
+
+本機重現 GitHub Pages 的建置路徑：
+
+```sh
+VITE_BASE_PATH=/a11y-tutorial npm run build
+```
+
+官方參考：[Pages workflow](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)、
+[套件的 Actions 讀取權限](https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility#ensuring-workflow-access-to-your-package)。
 
 ## 注意事項
 

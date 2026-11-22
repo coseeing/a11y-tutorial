@@ -3,12 +3,12 @@ import { fileURLToPath } from 'node:url'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
+import { pagesBase } from './scripts/pages-base.mjs'
 
 const root = fileURLToPath(new URL('.', import.meta.url))
 
-// 部署位置：https://accessibility.coseeing.org/a11y-tutorial/11512-nanshanlife/
-// 開發伺服器也使用同一路徑：http://localhost:5173/a11y-tutorial/11512-nanshanlife/
-const base = '/a11y-tutorial/11512-nanshanlife/'
+// 預設沿用原本教學網站的路徑；Actions 依 GitHub Pages 設定傳入部署前綴。
+const base = pagesBase(process.env.VITE_BASE_PATH)
 
 // 多頁應用：每個範例頁都是獨立的 HTML，讓 NVDA 每次都經歷真正的頁面載入
 // （念出頁面標題、從頁首開始讀），行為與真實網站一致。
@@ -28,6 +28,10 @@ const pages = {
   'b-trial': 'b/trial/index.html',
   notice: 'notice/index.html',
   done: 'done/index.html',
+  'practice-index': 'test-practice/index.html',
+  'practice-1': 'test-practice/1/index.html',
+  'practice-2': 'test-practice/2/index.html',
+  'practice-3': 'test-practice/3/index.html',
 }
 
 // 開發伺服器：網址少了結尾斜線（例如 /a/terms）時，Vite 會退回根目錄的 index.html，

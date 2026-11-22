@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "node --test scripts/pages-base.test.mjs && vitest run"
   },
   "dependencies": {
     "@coseeing/ui": "^1.0.0",
@@ -21,6 +22,12 @@
     "@vitejs/plugin-react": "^6.1.2",
     "oxlint": "^1.90.0",
     "tailwindcss": "^4.3.5",
-    "vite": "^8.3.6"
+    "vite": "^8.3.6",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/user-event": "^14.6.7",
+    "jsdom": "^26.1.0",
+    "vitest": "^3.2.7",
+    "dom-accessibility-api": "^0.7.0"
   }
 }
