@@ -61,7 +61,7 @@ export default function IndexPage() {
             活動 8：無障礙檢測練習
           </h2>
           <p className="typography-body1 m-0">
-            使用檢測工具檢查活動導覽、課程內容與行前提醒，記錄發現並判讀結果。從第一頁開始，依頁面連結繼續練習。
+            使用 Freego 檢查活動導覽、課程內容與行前提醒，開啟報告並記錄檢測結果。從第一頁開始，依頁面連結繼續練習。
           </p>
           <Link href="./test-practice/1/" className={`${textLink} justify-self-start`}>
             開始活動 8：無障礙檢測練習

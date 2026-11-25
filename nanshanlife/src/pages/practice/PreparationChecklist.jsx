@@ -14,15 +14,20 @@ export function PreparationChecklist() {
     >
       <p className="typography-body2 m-0 text-teal-700">練習時請使用虛構資料。</p>
       <div className="grid gap-8">
-        {/* WAVE label_missing: visible text intentionally has no programmatic association. */}
+        {/* Freego HM1130104C: visible text intentionally has no label association. */}
         <p className="typography-strong2 m-0 text-teal-700">姓名</p>
         <Input id="practice-name" name="name" autoComplete="off" />
       </div>
       <Field label="電子信箱" htmlFor="practice-email">
-        {/* WAVE aria_reference_broken: the referenced description ID intentionally does not exist. */}
-        <Input id="practice-email" name="email" type="email" autoComplete="off" aria-describedby="practice-email-help" />
+        <Input id="practice-email" name="email" type="email" autoComplete="off" aria-describedby="practice-contact-help" />
         <p id="practice-contact-help" className="typography-body2 m-0 text-teal-700">僅用於通知課程異動。</p>
       </Field>
+      {/* Freego HM1130103C: first fieldset child intentionally is not a legend. */}
+      <fieldset id="practice-skills" className="m-0 grid min-w-0 gap-8 rounded-8 border border-bg-warm-gray p-16">
+        <p className="typography-strong2 m-0 text-teal-700">想學的技能（可複選）</p>
+        <Checkbox name="skills" value="wood" label="木製品修繕" />
+        <Checkbox name="skills" value="clothes" label="衣物修補" />
+      </fieldset>
       <Checkbox
         required
         label="我已確認報到資訊與要帶的物品"

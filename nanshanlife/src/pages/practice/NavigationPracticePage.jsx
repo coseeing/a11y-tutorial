@@ -14,7 +14,7 @@ export default function NavigationPracticePage() {
           <div>
             <p className="typography-strong2 mb-8 mt-0">前往課程內容</p>
             {/* Intentionally unnamed link for the workshop exercise. */}
-            <Link href={appPath("/test-practice/2/")} className={quickLinkClass}>
+            <Link id="practice-course-link" href={appPath("/test-practice/2/")} className={quickLinkClass}>
               <ArrowRightIcon className="size-20" />
             </Link>
           </div>
@@ -26,12 +26,16 @@ export default function NavigationPracticePage() {
           </div>
         </div>
       </Card>
+      <Card title="活動海報" padded>
+        {/* Freego HM1110100C: information-bearing image intentionally lacks alt. */}
+        <img id="practice-poster" src={appPath('/practice/workshop-poster.svg')} width="640" height="240" className="h-auto w-full max-w-[64rem]" />
+      </Card>
       <Card title="課程快訊" padded>
+        {/* Freego HM1110106C: decorative empty-alt image intentionally also has title. */}
+        <img id="practice-news-decoration" src={appPath('/wave-demo/celebration.svg')} alt="" title="課程快訊裝飾" width="180" height="48" className="mb-12 h-48 w-auto" />
         <p className="typography-body1 mb-12 mt-0">各場次的時間與名額已更新，報名前請先確認。</p>
-        {/* WAVE link_redundant: adjacent links intentionally have the same destination. */}
         <div className="typography-body1 flex flex-wrap gap-16">
           <Link href={appPath("/test-practice/2/")} className="underline">瀏覽課程場次</Link>
-          <Link href={appPath("/test-practice/2/")} className="underline">查看剩餘名額</Link>
         </div>
       </Card>
       <Card id="workshop-program" title="課程內容" padded>

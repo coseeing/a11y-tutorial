@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="240" viewBox="0 0 640 240">
+  <rect width="640" height="240" rx="24" fill="#1f4147"/>
+  <path d="M36 44h64" stroke="#fea400" stroke-width="8"/>
+  <g fill="#f6f7f1" font-family="sans-serif">
+    <text x="36" y="104" font-size="36" font-weight="700">週末修繕工作坊</text>
+    <text x="36" y="154" font-size="24">木製品修繕與衣物修補</text>
+    <text x="36" y="202" font-size="20">09:30–15:30｜社區活動中心</text>
+  </g>
+</svg>

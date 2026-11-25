@@ -23,15 +23,17 @@
 | 行前提醒 | `/test-practice/3/` |
 
 頁面原始碼在 `src/pages/practice/`，使用 `@coseeing/ui` 的 Card、Button、Link、
-Table、Tabs、Accordion、Field、Input 等共用元件。下午場刻意沒有表頭的表格
-位於 `src/lookalikes/PracticeLayoutTable.jsx`。圖片與其他資源都放在 `public/`。
+Table、Tabs、Accordion、Field、Input、Checkbox 等共用元件。圖片與其他資源都放在 `public/`。
 
-保留的檢測情境包含：無名稱連結、相鄰同網址連結、跳級標題、沒有表頭的資料表、
-可疑的圖片替代文字、低對比文字、姓名欄位缺少關聯標籤，以及失效的 ARIA 說明參照。
+活動 8 已改用 Freego Dec 19 2025 規則設計，每頁有三種機器檢測問題，共九種。
+第 1 頁檢查連結名稱、圖片 alt 及裝飾圖屬性；第 2 頁檢查網頁 title、圖片按鈕及
+iframe 名稱；第 3 頁檢查網頁 lang、姓名標籤及 fieldset 的 legend。
 請勿修正這些教學目標。模擬報名不會送出或儲存個人資料。
 
-執行 `npm test` 可驗證這些情境；授課前仍需使用 Chrome 的 WAVE 擴充套件檢查，
-並切到下午場後重新掃描。
+執行 `npm test` 可驗證情境與操作。九個檢測碼、實際規則驗證方式及學習單連結見
+[`docs/freego-practice.md`](docs/freego-practice.md)。授課前仍需以授課版本 Freego
+啟用 JavaScript 並逐頁產生單頁報告。這些目標均屬 A 級碼，可使用 A 或 AA 檢測；
+目前學習單以 AA 規劃。上午／下午場表格與電子信箱是正常對照，不再作為錯誤題目。
 
 ### 正式網址
 
