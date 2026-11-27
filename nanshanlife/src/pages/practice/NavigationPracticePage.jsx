@@ -8,7 +8,15 @@ const quickLinkClass = "inline-flex min-h-40 min-w-40 items-center justify-cente
 export default function NavigationPracticePage({ variant = "" }) {
   return (
     <>
-      <h1 className="typography-headline1 m-0 text-teal-700">週末修繕工作坊</h1>
+      {variant === "a" ? (
+        <h1 id="practice-page-heading" className="typography-headline1 m-0 text-teal-700">週末修繕工作坊</h1>
+      ) : (
+        <>
+          {/* The template leaves an empty heading while visible text is a paragraph. */}
+          <h1 id="practice-page-heading" className="sr-only" />
+          <p className="typography-headline1 m-0 text-teal-700">週末修繕工作坊</p>
+        </>
+      )}
       <Card title="活動導覽" padded>
         <div className="flex flex-wrap gap-24">
           <div>
@@ -31,8 +39,7 @@ export default function NavigationPracticePage({ variant = "" }) {
         <img id="practice-poster" alt={variant === "a" ? "週末修繕工作坊：木製品修繕與衣物修補，09:30–15:30，社區活動中心。" : undefined} src={appPath('/practice/workshop-poster.svg')} width="640" height="240" className="h-auto w-full max-w-[64rem]" />
       </Card>
       <Card title="課程快訊" padded>
-        {/* Freego HM1110106C: decorative empty-alt image intentionally also has title. */}
-        <img id="practice-news-decoration" src={appPath('/wave-demo/celebration.svg')} alt="" title={variant === "a" ? undefined : "課程快訊裝飾"} width="180" height="48" className="mb-12 h-48 w-auto" />
+        <img id="practice-news-decoration" src={appPath('/wave-demo/celebration.svg')} alt="" width="180" height="48" className="mb-12 h-48 w-auto" />
         <p className="typography-body1 mb-12 mt-0">各場次的時間與名額已更新，報名前請先確認。</p>
         <div className="typography-body1 flex flex-wrap gap-16">
           <Link href={practicePath(2, variant)} className="underline">瀏覽課程場次</Link>

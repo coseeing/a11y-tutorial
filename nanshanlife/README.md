@@ -28,7 +28,7 @@
 Table、Tabs、Accordion、Field、Input、Checkbox 等共用元件。圖片與其他資源都放在 `public/`。
 
 活動 8 已改用 Freego Dec 19 2025 規則設計，B 版每頁有三種機器檢測問題，共九種；A 版修正這九種問題。
-第 1 頁檢查連結名稱、圖片 alt 及裝飾圖屬性；第 2 頁檢查網頁 title、圖片按鈕及
+第 1 頁檢查連結名稱、圖片 alt 及空白主標題；第 2 頁檢查網頁 title、表格表頭關聯及
 iframe 名稱；第 3 頁檢查網頁 lang、姓名標籤及 fieldset 的 legend。
 請勿修正 B 版的這些教學目標。模擬報名不會送出或儲存個人資料。
 

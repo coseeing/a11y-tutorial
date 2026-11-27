@@ -47,8 +47,8 @@ public class FreegoPracticeCheck {
     }
     require(args.length == 3, "Provide page1.html, page2.html and page3.html captured after React loads.");
     var expected = new ArrayList<Set<String>>();
-    expected.add(Set.of("HM1110100C", "HM1110106C", "HM1240401C"));
-    expected.add(Set.of("HM1110104C", "HM1240200C", "HM1410201C"));
+    expected.add(Set.of("HM1110100C", "HM1130100C", "HM1240401C"));
+    expected.add(Set.of("HM1130101C", "HM1240200C", "HM1410201C"));
     expected.add(Set.of("HM1130103C", "HM1130104C", "HM1310100C"));
     for (int i = 0; i < 3; i++) {
       var document = Jsoup.parse(Files.readString(Path.of(args[i])));
@@ -58,11 +58,13 @@ public class FreegoPracticeCheck {
       var fixed = document.clone();
       if (i == 0) {
         fixed.getElementById("practice-poster").attr("alt", "週末修繕工作坊，木製品修繕與衣物修補");
-        fixed.getElementById("practice-news-decoration").removeAttr("title");
+        fixed.getElementById("practice-page-heading").text("週末修繕工作坊");
         fixed.getElementById("practice-course-link").attr("aria-label", "查看課程內容");
       } else if (i == 1) {
         fixed.title("課程內容｜週末修繕工作坊");
-        fixed.getElementById("practice-summary-button").attr("alt", "查看課程摘要");
+        for (var header : fixed.getElementById("practice-morning-table").select("th")) {
+          header.attr("scope", header.parent().parent().tagName().equals("thead") ? "col" : "row");
+        }
         fixed.getElementById("practice-venue-frame").attr("title", "活動中心位置示意");
       } else {
         fixed.selectFirst("html").attr("lang", "zh-Hant");

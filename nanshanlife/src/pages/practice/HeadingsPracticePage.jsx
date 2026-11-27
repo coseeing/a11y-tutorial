@@ -1,6 +1,7 @@
 import { Card, Button, Table, Tabs } from "@coseeing/ui"
 import { useState } from 'react'
 import { appPath, practicePath } from "./paths.js"
+import { PracticeScheduleTable } from './PracticeScheduleTable.jsx'
 
 
 const columns = [
@@ -29,7 +30,7 @@ export default function HeadingsPracticePage({ variant = "" }) {
           items={[
             {
               label: "上午場",
-              content: <Table columns={columns} rows={[{ className: "木製品修繕", time: "09:30–11:00", seats: "已額滿" }]} />,
+              content: <PracticeScheduleTable variant={variant} columns={columns} rows={[{ className: "木製品修繕", time: "09:30–11:00", seats: "已額滿" }, { className: "家具保養", time: "11:10–12:00", seats: "5 位" }]} />,
             },
             {
               label: "下午場",
@@ -41,8 +42,7 @@ export default function HeadingsPracticePage({ variant = "" }) {
       <Card title="課程摘要" padded>
         <p className="typography-body1 mt-0">查看課程摘要</p>
         <form onSubmit={(event) => { event.preventDefault(); setSummaryOpen(true) }}>
-          {/* Freego HM1110104C: this image input intentionally lacks alt. */}
-          <input id="practice-summary-button" alt={variant === "a" ? "查看課程摘要" : undefined} type="image" src={appPath('/practice/course-info.svg')} width="40" height="40" className="h-40 w-40 cursor-pointer rounded-8 bg-teal-700 p-8" />
+          <input id="practice-summary-button" alt="查看課程摘要" type="image" src={appPath('/practice/course-info.svg')} width="40" height="40" className="h-40 w-40 cursor-pointer rounded-8 bg-teal-700 p-8" />
         </form>
         <p role="status" className="typography-body1 mb-0">{summaryOpen ? '木製品修繕與衣物修補均提供現場示範及實作。' : ''}</p>
       </Card>
