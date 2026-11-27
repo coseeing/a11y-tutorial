@@ -1,9 +1,9 @@
 import { Card, Accordion, Link } from "@coseeing/ui"
 import { PreparationChecklist } from "./PreparationChecklist.jsx"
-import { appPath } from "./paths.js"
+import { appPath, practicePath } from "./paths.js"
 
 
-export default function RemindersPracticePage() {
+export default function RemindersPracticePage({ variant = "" }) {
   return (
     <>
       <h1 className="typography-headline1 m-0 text-teal-700">週末修繕工作坊</h1>
@@ -22,8 +22,8 @@ export default function RemindersPracticePage() {
           ]}
         />
       </Card>
-      <Card title="報名資料" padded><PreparationChecklist /></Card>
-      <Link href={appPath("/test-practice/1/")} className="typography-body1 self-start underline">回到活動導覽</Link>
+      <Card title="報名資料" padded><PreparationChecklist variant={variant} /></Card>
+      <Link href={practicePath(1, variant)} className="typography-body1 self-start underline">回到活動導覽</Link>
     </>
   )
 }

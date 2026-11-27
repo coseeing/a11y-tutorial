@@ -8,6 +8,24 @@ import HeadingsPracticePage from './HeadingsPracticePage.jsx'
 import RemindersPracticePage from './RemindersPracticePage.jsx'
 
 describe('Freego practice targets', () => {
+  it('provides named links and equivalent image text in version A', () => {
+    const { container } = render(<NavigationPracticePage variant="a" />)
+    expect(computeAccessibleName(container.querySelector('#practice-course-link'))).toBe('前往課程內容')
+    expect(container.querySelector('#practice-course-link')).toHaveAttribute('href', expect.stringContaining('/a/test-practice/2/'))
+    expect(container.querySelector('#practice-poster').getAttribute('alt')).toContain('09:30–15:30')
+    expect(container.querySelector('#practice-news-decoration')).not.toHaveAttribute('title')
+  })
+  it('names the image button and embedded content in version A', () => {
+    const { container } = render(<HeadingsPracticePage variant="a" />)
+    expect(container.querySelector('#practice-summary-button')).toHaveAttribute('alt', '查看課程摘要')
+    expect(container.querySelector('#practice-venue-frame')).toHaveAttribute('title', '活動中心位置示意')
+  })
+  it('labels the field and its group in version A', () => {
+    const { container } = render(<RemindersPracticePage variant="a" />)
+    expect(screen.getByRole('textbox', { name: '姓名' })).toBeInTheDocument()
+    expect(container.querySelector('#practice-skills').firstElementChild.tagName).toBe('LEGEND')
+    expect(screen.getByRole('link', { name: '回到活動導覽' })).toHaveAttribute('href', expect.stringContaining('/a/test-practice/1/'))
+  })
   it('preserves the three distinct image and link failures on page 1', () => {
     const { container } = render(<NavigationPracticePage />)
     expect(computeAccessibleName(container.querySelector('#practice-course-link'))).toBe('')

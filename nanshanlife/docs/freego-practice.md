@@ -7,6 +7,15 @@
 
 ## 九個機器檢測目標
 
+活動 8 的 A／B 版本與首頁其他活動共用索引表：
+
+- A 版：`/a/test-practice/1/`、`/a/test-practice/2/`、`/a/test-practice/3/`，修正以下九個問題。
+- B 版：`/b/test-practice/1/`、`/b/test-practice/2/`、`/b/test-practice/3/`，保留以下九個問題；兩版學習單均使用 B 版網址。
+- 兩版共用元件與視覺內容，導覽連結會保留各自版本。舊 `/test-practice/1/`～`/3/` 仍保留原本問題版。
+- 不可排除整個 `/a11y-tutorial/b/`，以免略過 B 版練習頁。排除教學改用 `/a11y-tutorial/a/`、`/a11y-tutorial/notice/`、`/a11y-tutorial/done/`。
+
+A 版是本次題目的正常對照，不代表已通過完整無障礙審核。可使用 `scripts/FreegoPracticeCheck.java --clean a1.html a2.html a3.html` 確認 A 版的三份瀏覽器 DOM 沒有 A 級機器規則失敗。
+
 下列碼號與訊息以 **Freego Dec 19 2025** 內建規則為準。不同年份規範頁面可能重編碼號，不要把其他版本的對照表當成本次報告的碼號。
 
 | 頁面 | 位置 | 實際規則碼 | 刻意條件 | 修正方向 |

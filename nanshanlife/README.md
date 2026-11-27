@@ -13,22 +13,24 @@
 另有講師索引頁 `/`、主辦單位公告 `/notice/`、註冊完成 `/done/`。
 
 講師索引首頁另有「活動 8：無障礙檢測練習」，連到本專案的
-`./test-practice/1/`，再依頁面連結前往第二、三頁。這些頁面和既有教材使用
+`./b/test-practice/1/`，再依頁面連結前往第二、三頁。索引表也提供 A 版正常對照。這些頁面和既有教材使用
 同一個 Vite 專案，不需要另外安裝、啟動或部署另一個專案。
 
-| 活動 8 頁面 | 路徑 |
-| --- | --- |
-| 活動導覽 | `/test-practice/1/` |
-| 課程內容 | `/test-practice/2/` |
-| 行前提醒 | `/test-practice/3/` |
+| 活動 8 頁面 | A 版 | B 版（學習單） |
+| --- | --- | --- |
+| 活動導覽 | `/a/test-practice/1/` | `/b/test-practice/1/` |
+| 課程內容 | `/a/test-practice/2/` | `/b/test-practice/2/` |
+| 行前提醒 | `/a/test-practice/3/` | `/b/test-practice/3/` |
+
+舊 `/test-practice/1/`～`/3/` 保留原本問題版供既有連結使用。
 
 頁面原始碼在 `src/pages/practice/`，使用 `@coseeing/ui` 的 Card、Button、Link、
 Table、Tabs、Accordion、Field、Input、Checkbox 等共用元件。圖片與其他資源都放在 `public/`。
 
-活動 8 已改用 Freego Dec 19 2025 規則設計，每頁有三種機器檢測問題，共九種。
+活動 8 已改用 Freego Dec 19 2025 規則設計，B 版每頁有三種機器檢測問題，共九種；A 版修正這九種問題。
 第 1 頁檢查連結名稱、圖片 alt 及裝飾圖屬性；第 2 頁檢查網頁 title、圖片按鈕及
 iframe 名稱；第 3 頁檢查網頁 lang、姓名標籤及 fieldset 的 legend。
-請勿修正這些教學目標。模擬報名不會送出或儲存個人資料。
+請勿修正 B 版的這些教學目標。模擬報名不會送出或儲存個人資料。
 
 執行 `npm test` 可驗證情境與操作。九個檢測碼、實際規則驗證方式及學習單連結見
 [`docs/freego-practice.md`](docs/freego-practice.md)。授課前仍需以授課版本 Freego
@@ -119,7 +121,7 @@ workflow 使用 GitHub 自動提供的 `GITHUB_TOKEN` 與 `packages: read` 安�
 跨儲存庫套件權限。這些 GitHub 網站設定無法只靠提交 workflow 檔案完成。
 
 未設定自訂網域時，預期首頁為 `https://coseeing.github.io/a11y-tutorial/`，
-活動 8 第一頁為 `https://coseeing.github.io/a11y-tutorial/test-practice/1/`。
+活動 8 學員練習第一頁為 `https://coseeing.github.io/a11y-tutorial/b/test-practice/1/`。
 實際網址以部署 job 的輸出為準。workflow 會依 Pages 回傳的 `base_path`
 設定 `VITE_BASE_PATH`，也支援自訂網域的根路徑。
 

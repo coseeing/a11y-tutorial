@@ -1,0 +1,9 @@
+import Page from '../pages/practice/NavigationPracticePage.jsx'
+import { PracticeLayout } from '../pages/practice/PracticeLayout.jsx'
+import { mount } from '../site/mount.jsx'
+
+export default function PracticePage() {
+  return <PracticeLayout><Page variant="b" /></PracticeLayout>
+}
+
+mount(PracticePage)

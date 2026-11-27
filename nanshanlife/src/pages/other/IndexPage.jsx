@@ -10,6 +10,9 @@ const PAGES = [
   { name: '課程場次頁', path: 'sessions', usage: '活動 5：查詢課程場次' },
   { name: '課程詳情頁', path: 'course', usage: '活動 6：收藏與報名課程' },
   { name: '預約試聽頁', path: 'trial', usage: '活動 7：預約試聽' },
+  { name: '活動導覽／海報', path: 'test-practice/1', usage: '活動 8：Freego 檢測練習（第 1 頁）' },
+  { name: '課程內容／嵌入資訊', path: 'test-practice/2', usage: '活動 8：Freego 檢測練習（第 2 頁）' },
+  { name: '行前提醒／報名資料', path: 'test-practice/3', usage: '活動 8：Freego 檢測練習（第 3 頁）' },
 ]
 
 const COLUMNS = [
@@ -42,7 +45,7 @@ export default function IndexPage() {
       <Container className="grid gap-24 py-40">
         <h1 className="typography-headline2 m-0 text-teal-PRIMARY">工作坊範例索引</h1>
         <p className="typography-body1 m-0">
-          所有範例頁都設定為虛構網站「好好學」線上課程平台。每個頁面都有 A 版（良好）與 B 版（有問題），兩版外觀與文字相同，差別只在輔助科技讀到的資訊。
+          活動 1～7 使用虛構網站「好好學」線上課程平台，活動 8 使用「週末修繕工作坊」。每個頁面都有 A 版（良好）與 B 版（有問題），兩版外觀與文字相同，差別只在輔助科技讀到的資訊。
         </p>
         <Table columns={COLUMNS} rows={rows} />
         <p className="typography-body2 m-0 text-teal-300">
@@ -63,8 +66,8 @@ export default function IndexPage() {
           <p className="typography-body1 m-0">
             使用 Freego 檢查活動導覽、課程內容與行前提醒，開啟報告並記錄檢測結果。從第一頁開始，依頁面連結繼續練習。
           </p>
-          <Link href="./test-practice/1/" className={`${textLink} justify-self-start`}>
-            開始活動 8：無障礙檢測練習
+          <Link href="./b/test-practice/1/" className={`${textLink} justify-self-start`}>
+            開始活動 8：無障礙檢測練習（B 版）
           </Link>
         </section>
       </Container>

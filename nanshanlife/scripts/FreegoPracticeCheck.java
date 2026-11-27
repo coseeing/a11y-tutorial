@@ -37,6 +37,14 @@ public class FreegoPracticeCheck {
   }
 
   public static void main(String[] args) throws Exception {
+    if (args.length == 4 && args[0].equals("--clean")) {
+      for (int i = 1; i <= 3; i++) {
+        var actual = failures(Jsoup.parse(Files.readString(Path.of(args[i]))));
+        require(actual.isEmpty(), "Version A page " + i + " has A-rule failures: " + actual);
+        System.out.println("Version A page " + i + ": no A-rule failures");
+      }
+      return;
+    }
     require(args.length == 3, "Provide page1.html, page2.html and page3.html captured after React loads.");
     var expected = new ArrayList<Set<String>>();
     expected.add(Set.of("HM1110100C", "HM1110106C", "HM1240401C"));

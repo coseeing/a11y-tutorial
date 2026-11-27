@@ -2,3 +2,7 @@
 export function appPath(path) {
   return `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
 }
+
+export function practicePath(page, variant = '') {
+  return appPath(`/${variant ? `${variant}/` : ''}test-practice/${page}/`)
+}

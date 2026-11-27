@@ -3,7 +3,12 @@ import { appPath } from './paths.js'
 
 export function PracticeLayout({ children }) {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col" style={{
+      // Keep CJK glyphs consistent even when page B deliberately lacks lang.
+      '--font-inter': 'Inter, "Noto Sans TC", "Noto Sans CJK TC", "PingFang TC", "Microsoft JhengHei", sans-serif',
+      '--font-noto': '"Noto Sans TC", "Noto Sans CJK TC", "PingFang TC", "Microsoft JhengHei", sans-serif',
+      fontFamily: 'var(--font-noto)',
+    }}>
       <a href="#main" className="typography-strong2 sr-only rounded-8 bg-teal-PRIMARY px-16 py-12 text-neutral-white focus:not-sr-only focus:absolute focus:left-16 focus:top-16 focus:z-[80]">
         跳到主要內容
       </a>
